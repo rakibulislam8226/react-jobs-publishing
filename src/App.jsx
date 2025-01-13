@@ -5,6 +5,7 @@ import NotFound from './pages/NotFound';
 import JobPage from './pages/JobPage';
 import { JobLoader } from './pages/JobPage';
 import AddJob from './pages/AddJob';
+import JobEditPage from './pages/JobEditPage';
 
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 
@@ -26,18 +27,31 @@ const App = () => {
   };
 
   const deleteJob = async (id) => {
-    console.log('deleteJob', id);
-    
-    // const response = await fetch(`/api/jobs/${id}`, {
-    //   method: 'DELETE',
-    // });
-    // if (!response.ok) {
-    //   throw new Error('Failed to delete job');
-    // }
-    // else {
-    //   return
-    // };
+    const response = await fetch(`/api/jobs/${id}`, {
+      method: 'DELETE',
+    });
+    if (!response.ok) {
+      throw new Error('Failed to delete job');
+    }
+    else {
+      return
+    };
   };
+  const updateJobSubmit = async (id, updatedJob) => {
+    const response = await fetch(`/api/jobs/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updatedJob)
+    });
+    if (!response.ok) {
+      throw new Error('Failed to update job');
+    }
+    else {
+      return
+    };
+  }
 
   const routes = createBrowserRouter(
     createRoutesFromElements(
@@ -46,6 +60,7 @@ const App = () => {
         <Route path='/jobs' element={<JobsPages />} />
         <Route path='/add-job' element={<AddJob addNewJobFormSubmit={addNewJobForm} />} />
         <Route path='/jobs/:id' element={<JobPage deleteJob={deleteJob} />} loader={JobLoader} />
+        <Route path='/jobs-edit/:id' element={<JobEditPage updateJobSubmit={updateJobSubmit} />} loader={JobLoader} />
         <Route path='*' element={<NotFound />} />
       </Route>
     )
