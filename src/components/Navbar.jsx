@@ -34,7 +34,7 @@ function Navbar() {
                                         className={activeNav}
                                     >Jobs</NavLink>
                                     <NavLink
-                                        to="/add-job.html"
+                                        to="/add-job"
                                         className={activeNav}
                                     >Add Job</NavLink>
                                 </div>
