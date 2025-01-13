@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import logo from '../assets/images/logo.png'
 
 function Navbar() {
+    const activeNav = ({ isActive }) => isActive ? "text-white bg-black hover:bg-gray-900 hover:text-white rounded-md px-3 py-2" : "text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2";
     return (
         <div>
             <nav className="bg-indigo-700 border-b border-indigo-500">
@@ -24,18 +25,18 @@ function Navbar() {
                             </Link>
                             <div className="md:ml-auto">
                                 <div className="flex space-x-2">
-                                    <Link
+                                    <NavLink
                                         to="/"
-                                        className="text-white bg-black hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
-                                    >Home</Link>
-                                    <Link
+                                        className={activeNav}
+                                    >Home</NavLink>
+                                    <NavLink
                                         to="/jobs"
-                                        className="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
-                                    >Jobs</Link>
-                                    <Link
+                                        className={activeNav}
+                                    >Jobs</NavLink>
+                                    <NavLink
                                         to="/add-job.html"
-                                        className="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
-                                    >Add Job</Link>
+                                        className={activeNav}
+                                    >Add Job</NavLink>
                                 </div>
                             </div>
                         </div>

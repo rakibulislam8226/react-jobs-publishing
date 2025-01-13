@@ -2,8 +2,9 @@ import React from 'react';
 import jobs from '../jobs.json';
 import JobListing from './JobListing';
 
-function JobsListings() {
-    const recentJobs = jobs.slice(0, 3);
+function JobsListings({ lastThreeJobs = false }) {
+    const recentJobs = lastThreeJobs ? jobs.slice(0, 3) : jobs;
+    
     return (
         <div>
             <section className="bg-blue-50 px-4 py-10">

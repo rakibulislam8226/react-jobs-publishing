@@ -11,7 +11,7 @@ const HomePages = () => {
         <div>
             <Hero />
             <HomeCards />
-            <JobListings />
+            <JobListings lastThreeJobs={true}/>
             <ViewAllJobs />
         </div>
     )
