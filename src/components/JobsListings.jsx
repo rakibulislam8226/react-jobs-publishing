@@ -2,7 +2,7 @@ import React from 'react';
 import jobs from '../jobs.json';
 import JobListing from './JobListing';
 
-function JobsListing() {
+function JobsListings() {
     const recentJobs = jobs.slice(0, 3);
     return (
         <div>
@@ -25,6 +25,6 @@ function JobsListing() {
     )
 }
 
-export default JobsListing
+export default JobsListings
 
 

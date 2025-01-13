@@ -1,6 +1,6 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import JobsListing from "./components/JobsListings";
+import JobsListings from "./components/JobsListings";
 import ViewAllJobs from "./components/ViewAllJobs";
 import HomeCards from "./components/HomeCards";
 
@@ -11,10 +11,12 @@ function App() {
       <Navbar />
       <Hero />
       <HomeCards />
-      <JobsListing />
+      <JobsListings />
       <ViewAllJobs />
     </>
   )
 }
 
 export default App
+
+1.08
