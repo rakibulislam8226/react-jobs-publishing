@@ -8,7 +8,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       "/api": {
-        target: "http://localhost:8000", // change this to your Strapi server
+        target: "http://localhost:8000", // change this to your api server
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },

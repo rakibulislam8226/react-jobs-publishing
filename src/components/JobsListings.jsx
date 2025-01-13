@@ -4,10 +4,11 @@ import Spinner from './Spinner';
 
 function JobsListings({ lastThreeJobs = false }) {
     const [jobs, setJobs] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const fetchJobs = async () => {
+            setLoading(true);
             const apiUrl = lastThreeJobs ? '/api/jobs?_limit=3' : '/api/jobs';
             try {
                 const response = await fetch(apiUrl);
@@ -22,6 +23,18 @@ function JobsListings({ lastThreeJobs = false }) {
         fetchJobs();
     }, []);
 
+    const showJobs = () => {
+        if (loading) return <Spinner loading={loading} />
+        if (jobs.length === 0) return <div className='text-center text-lg mt-10 italic'>No jobs found</div>
+        return (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {jobs.map((job) => (
+                    <JobListing key={job.id} {...job} />
+                ))}
+            </div>
+        )
+    }
+
     return (
         <div>
             <section className="bg-blue-50 px-4 py-10">
@@ -31,14 +44,7 @@ function JobsListings({ lastThreeJobs = false }) {
                     </h2>
 
                     {/* <!-- Job Listing --> */}
-                    {loading ? <Spinner loading={loading} />
-                        : <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            {
-                                jobs.map((job) => (
-                                    <JobListing key={job.id} {...job} />
-                                ))
-                            }
-                        </div>}
+                    {showJobs()}
                 </div>
             </section>
         </div>
