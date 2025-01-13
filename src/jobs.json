@@ -83,20 +83,6 @@
         "contactEmail": "contact@ipsumlorem.com",
         "contactPhone": "555-555-5555"
       }
-    },
-    {
-      "id": "7",
-      "type": "Internship",
-      "title": "Dolorum iure atque d",
-      "description": "Doloremque deleniti ",
-      "salary": "$90K - 100K",
-      "location": "Ipsum rerum volupta",
-      "company": {
-        "name": "Gould Schroeder Traders",
-        "description": "Est vel veniam moll",
-        "contact_email": "kopep@mailinator.com",
-        "contact_phone": "+1 (907) 392-9341"
-      }
     }
   ]
 }
